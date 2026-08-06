@@ -1,0 +1,153 @@
+/* ─── Offerings Section ───────────────────────────────── */
+.offerings-section {
+  padding: 0;
+  position: relative;
+}
+
+/* ─── Offering Stack ─────────────────────────────────── */
+.offerings-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Offering Row ───────────────────────────────────── */
+.offering-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 260px;
+  border-top: 1px solid rgba(125, 249, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+
+.offering-row:last-child {
+  border-bottom: 1px solid rgba(125, 249, 255, 0.12);
+}
+
+.offering-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ─── Reversed Row (image on right) ──────────────────── */
+.offering-row--reversed {
+  flex-direction: row-reverse;
+}
+
+@media (min-width: 768px) {
+  .offering-row--reversed .offering-text-col {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+/* ─── Image Column ───────────────────────────────────── */
+.offering-image-col {
+  flex: 0 0 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(125, 249, 255, 0.08);
+}
+
+.offering-row--reversed .offering-image-col {
+  background: rgba(255, 255, 255, 0.02);
+  border-right: none;
+  border-left: 1px solid rgba(125, 249, 255, 0.08);
+}
+
+/* ─── Offering Image ─────────────────────────────────── */
+.offering-img {
+  max-width: 85%;
+  max-height: 85%;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease;
+  opacity: 0.85;
+}
+
+.offering-row:hover .offering-img {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+/* ─── Text Column ────────────────────────────────────── */
+.offering-text-col {
+  flex: 1 1 67%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.25rem 4rem;
+  background: rgba(10, 15, 44, 0.65);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+}
+
+/* ─── Offering Label (ID badge) ──────────────────────── */
+.offering-label {
+  font-family: 'Inter', Helvetica, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7df9ff;
+  margin-bottom: 0.5rem;
+}
+
+/* ─── Offering Title ─────────────────────────────────── */
+.offering-title {
+  font-family: 'Outfit', 'Inter', Helvetica, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* ─── Offering Accent ────────────────────────────────── */
+.offering-accent {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #7df9ff, #00c8d4);
+  border-radius: 2px;
+}
+
+/* ─── Offering Description ───────────────────────────── */
+.offering-desc {
+  font-family: 'Inter', Helvetica, sans-serif;
+  font-size: 0.95rem;
+  color: rgba(200, 220, 255, 0.8);
+  line-height: 1.7;
+  margin: 1rem 0 0 0;
+  max-width: 600px;
+}
+
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 767.98px) {
+  .offering-row,
+  .offering-row--reversed {
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+  }
+
+  .offering-image-col {
+    flex: 0 0 auto;
+    min-height: 200px;
+  }
+
+  .offering-text-col {
+    padding: 2rem 1.5rem;
+  }
+
+  .offering-title {
+    font-size: 1.35rem;
+  }
+}

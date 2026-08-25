@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import * as siteData from '../../data.json';
 
 @Component({
   selector: 'app-offering',
- standalone: true,
- imports: [CommonModule],
- standalone: true,
- imports: [CommonModule],
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './offering.component.html',
   styleUrls: ['./offering.component.css']
 })

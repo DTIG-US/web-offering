@@ -26,6 +26,17 @@
 .offerings-section {
   padding: 0;
   position: relative;
+  background-color: var(--ih-offerings-bg, transparent);
+  border: 1px solid var(--ih-offerings-border, transparent);
+  color: var(--ih-offerings-text, inherit);
+}
+
+.offerings-section a {
+  color: var(--ih-offerings-link, inherit);
+}
+
+.offerings-section a:hover {
+  color: var(--ih-offerings-link-hover, inherit);
 }
 
 /* ─── Offering Stack ─────────────────────────────────── */

@@ -1,13 +1,12 @@
 :host {
   /* Offering Component Tokens & Defaults */
-  --ih-offering-row-height: 200px;
+  --ih-offering-image-height: 220px;
   --ih-offering-row-bg: rgba(255, 255, 255, 0.02);
   --ih-offering-row-bg-hover: rgba(255, 255, 255, 0.05);
   --ih-offering-row-border: rgba(125, 249, 255, 0.12);
 
   /* Image Column */
   --ih-offering-image-bg: rgba(255, 255, 255, 0.03);
-  --ih-offering-image-bg-rev: rgba(255, 255, 255, 0.02);
   --ih-offering-image-border: rgba(125, 249, 255, 0.08);
 
   /* Text Column & Typography */
@@ -39,47 +38,33 @@
   color: var(--ih-offerings-link-hover, inherit);
 }
 
-/* ─── Offering Stack ─────────────────────────────────── */
+/* ─── Offering Grid (3 columns) ──────────────────────── */
 .offerings-stack {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
-/* ─── Offering Row ───────────────────────────────────── */
+/* ─── Offering Card ──────────────────────────────────── */
 .offering-row {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: stretch;
-  height: var(--ih-offering-row-height);
-  border-top: 1px solid var(--ih-offering-row-border);
+  height: auto;
+  border: 1px solid var(--ih-offering-row-border);
   background: var(--ih-offering-row-bg);
   transition: background 0.3s ease;
   overflow: hidden;
-}
-
-.offering-row:last-child {
-  border-bottom: 1px solid var(--ih-offering-row-border);
 }
 
 .offering-row:hover {
   background: var(--ih-offering-row-bg-hover);
 }
 
-/* ─── Reversed Row (image on right) ──────────────────── */
-.offering-row--reversed {
-  flex-direction: row-reverse;
-}
-
-@media (min-width: 768px) {
-  .offering-row--reversed .offering-text-col {
-    align-items: flex-end;
-    text-align: right;
-  }
-}
-
-/* ─── Image Column ───────────────────────────────────── */
+/* ─── Image Area (top of card) ───────────────────────── */
 .offering-image-col {
-  flex: 0 0 33%;
+  flex: 0 0 auto;
+  height: var(--ih-offering-image-height);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,13 +72,7 @@
   background: var(--ih-offering-image-bg);
   position: relative;
   overflow: hidden;
-  border-right: 1px solid var(--ih-offering-image-border);
-}
-
-.offering-row--reversed .offering-image-col {
-  background: var(--ih-offering-image-bg-rev);
-  border-right: none;
-  border-left: 1px solid var(--ih-offering-image-border);
+  border-bottom: 1px solid var(--ih-offering-image-border);
 }
 
 /* ─── Offering Image ─────────────────────────────────── */
@@ -102,7 +81,7 @@
   max-height: 85%;
   object-fit: contain;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.3s ease;
+    opacity 0.3s ease;
   opacity: 0.85;
 }
 
@@ -111,13 +90,13 @@
   opacity: 1;
 }
 
-/* ─── Text Column ────────────────────────────────────── */
+/* ─── Text Area ──────────────────────────────────────── */
 .offering-text-col {
-  flex: 1 1 67%;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 1.5rem 2.5rem;
+  justify-content: flex-start;
+  padding: 1.5rem;
   background: var(--ih-offering-panel-bg);
   backdrop-filter: blur(var(--ih-offering-panel-blur)) saturate(1.4);
   -webkit-backdrop-filter: blur(var(--ih-offering-panel-blur)) saturate(1.4);
@@ -165,25 +144,18 @@
 }
 
 /* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 991.98px) {
+  .offerings-stack {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 767.98px) {
-  .offering-row,
-  .offering-row--reversed {
-    flex-direction: column;
-    height: auto;
-    min-height: auto;
-  }
-
-  .offering-image-col {
-    flex: 0 0 auto;
-    min-height: 200px;
-  }
-
-  .offering-text-col {
-    padding: 2rem 1.5rem;
+  .offerings-stack {
+    grid-template-columns: 1fr;
   }
 
   .offering-title {
     font-size: 1.35rem;
   }
 }
-

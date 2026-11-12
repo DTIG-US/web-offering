@@ -1,19 +1,17 @@
 <section class="offerings-section" aria-label="Product Offerings">
   <div class="offerings-stack">
-    @for (item of data.offerings; track item.id; let i = $index) {
-      <div class="offering-row" [class.offering-row--reversed]="i % 2 !== 0">
-        <div class="offering-image-col">
-          <img [src]="item.image"
-               [alt]="item.title"
-               class="offering-img" />
-        </div>
-        <div class="offering-text-col">
-          <span class="offering-label">{{ item.id }}</span>
-          <h3 class="offering-title">{{ item.title }}</h3>
-          <div class="offering-accent" aria-hidden="true"></div>
-          <p class="offering-desc">{{ item.description }}</p>
-        </div>
+    @for (item of data.offerings; track item.id) {
+    <div class="offering-row">
+      <div class="offering-image-col">
+        <img [src]="item.image" [alt]="item.title" class="offering-img" />
       </div>
+      <div class="offering-text-col">
+        <span class="offering-label">{{ item.id }}</span>
+        <h3 class="offering-title">{{ item.title }}</h3>
+        <div class="offering-accent" aria-hidden="true"></div>
+        <p class="offering-desc">{{ item.description }}</p>
+      </div>
+    </div>
     }
   </div>
 </section>
